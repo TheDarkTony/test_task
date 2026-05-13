@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "1dd42b01-0e0b-4cbe-9c67-36e6e3aca223",
+		"name": "fitness",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "54791411",
+		"_collection_link": "https://tony-xyz93-8224550.postman.co/workspace/4792307c-77b0-4010-8287-23b3b31fde16/collection/54791411-1dd42b01-0e0b-4cbe-9c67-36e6e3aca223?action=share&source=collection_link&creator=54791411"
+	},
+	"item": [
+		{
+			"name": "workout",
+			"item": [
+				{
+					"name": "wo_list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{root_url}}/api/workouts?role={{role}}&sportsman_id=3&coach_id=2&batch={{batch}}&b_size={{b_size}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"api",
+								"workouts"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "{{role}}"
+								},
+								{
+									"key": "sportsman_id",
+									"value": "3"
+								},
+								{
+									"key": "coach_id",
+									"value": "2"
+								},
+								{
+									"key": "batch",
+									"value": "{{batch}}"
+								},
+								{
+									"key": "b_size",
+									"value": "{{b_size}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wo_item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{root_url}}/api/workouts/{{w_id}}?role={{role}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"api",
+								"workouts",
+								"{{w_id}}"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "{{role}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wo_edit_item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"workout_101\"\n    ,\"activity\":\"list of exercises for 103\"\n    ,\"result\":\"result 103\"\n    ,\"date\":\"2026-05-13T16:46:42.380215\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root_url}}/api/workouts/{{w_id}}?role={{role}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"api",
+								"workouts",
+								"{{w_id}}"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "{{role}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "person",
+			"item": [
+				{
+					"name": "p_list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{root_url}}/api/persons?role={{role}}&batch={{batch}}&b_size={{b_size}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"api",
+								"persons"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "{{role}}"
+								},
+								{
+									"key": "batch",
+									"value": "{{batch}}"
+								},
+								{
+									"key": "b_size",
+									"value": "{{b_size}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "p_leave",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{root_url}}/api/persons/{{p_id}}/status_leave?role={{role}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"api",
+								"persons",
+								"{{p_id}}",
+								"status_leave"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "{{role}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "permissions",
+			"item": [
+				{
+					"name": "perm_query",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{root_url}}/api/permissions?entity={{entity_perm}}&role={{role_perm}}&mode={{_perm_mode}}&batch={{batch}}&b_size={{b_size}}&person_id={{_perm_person_id}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"api",
+								"permissions"
+							],
+							"query": [
+								{
+									"key": "entity",
+									"value": "{{entity_perm}}"
+								},
+								{
+									"key": "role",
+									"value": "{{role_perm}}"
+								},
+								{
+									"key": "mode",
+									"value": "{{_perm_mode}}"
+								},
+								{
+									"key": "batch",
+									"value": "{{batch}}"
+								},
+								{
+									"key": "b_size",
+									"value": "{{b_size}}"
+								},
+								{
+									"key": "id",
+									"value": "{{perm_id}}",
+									"disabled": true
+								},
+								{
+									"key": "person_id",
+									"value": "{{_perm_person_id}}"
+								},
+								{
+									"key": "only_defaut",
+									"value": "{{only_defaut}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "health_check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{root_url}}/health_check/hello/",
+					"host": [
+						"{{root_url}}"
+					],
+					"path": [
+						"health_check",
+						"hello",
+						""
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer qwerty123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    //\"email\": \"admin@mail.ru\"\n    \"email\": \"ivanov@mail.ru\"\n    ,\"pwd\":\"admin@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{root_url}}/api/auth/login",
+					"host": [
+						"{{root_url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer qwerty123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fname\": \"tony2\"\n    ,\"lname\": \"smart2\"\n    ,\"email\": \"tony2@smart.by\"\n    ,\"pwd\": \"admin@123\"\n    ,\"pwd_confirmation\": \"admin@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{root_url}}/api/auth/register",
+					"host": [
+						"{{root_url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

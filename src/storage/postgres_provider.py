@@ -52,7 +52,13 @@ class PermissionsProvider(IPermissionsProvider, DataProvider):
         super().__init__(conn_creds)
     
     def list(self, entity: str, role: str, mode: str, person_id: int) -> Iterable[PermissionEntity]:
-        return self.get(PersonPermissionsQuery(entity, role, mode, person_id))
+        print('pppp')
+        perms = self.get(PersonPermissionsQuery(entity, role, mode, person_id))
+        perms = list(perms)
+        custom = list([p for p in perms if p.person_id is not None])
+        if len(custom) > 0:
+            return custom
+        return perms
     
     def get_first(self, entity: str, role: str, mode: str, person_id: int) -> PermissionEntity|None:
         permissions = list(self.list(entity, role, mode, person_id))
