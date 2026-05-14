@@ -98,7 +98,7 @@ class PersonEngine:
     
     def _get_current_person(self):
         current_prsn = self._person_provider.get_by_id(self._ctx.person_id, True)
-        if current_prsn.id == 0:
+        if current_prsn.id == 0 or not current_prsn.is_active:
             raise NotFoundResourseIssue(f"person has not been found")
         return current_prsn
 
